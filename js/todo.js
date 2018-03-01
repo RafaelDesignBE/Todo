@@ -32,9 +32,11 @@ class Note {
   class App {
     constructor() {
       console.log("👊🏼 The Constructor!");
-    
       // HINT🤩
       // clicking the button should work
+      document.querySelector('#btnAddNote').addEventListener('click', function(){
+          console.log("geklikt");
+      });
       // pressing the enter key should also work
       // this.btnAdd = ???
       // this.btnAdd.addEventListener("click", this.createNote.bind(this));
@@ -49,7 +51,6 @@ class Note {
      
     createNote(e){
       // this function should create a new note by using the Note() class
-      
       // HINT🤩
       // note.add();
       // note.saveToStorage();

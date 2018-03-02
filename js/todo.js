@@ -6,7 +6,6 @@ class Note {
     
     createElement(title){
       let newNote = document.createElement('div');
-      
       // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
       
       return newNote;
@@ -34,12 +33,9 @@ class Note {
       console.log("👊🏼 The Constructor!");
       // HINT🤩
       // clicking the button should work
-      document.querySelector('#btnAddNote').addEventListener('click', function(){
-          console.log("geklikt");
-      });
       // pressing the enter key should also work
-      // this.btnAdd = ???
-      // this.btnAdd.addEventListener("click", this.createNote.bind(this));
+      this.btnAdd = document.getElementById('btnAddNote');
+      this.btnAdd.addEventListener("click", this.createNote.bind(this));
       // this.loadNotesFromStorage();
     }
     
@@ -50,6 +46,9 @@ class Note {
     }
      
     createNote(e){
+      this.txtAdd = document.getElementById('txtAddNote').value;
+      let newnote = new Note(this.txtAdd);
+      console.log(newnote);
       // this function should create a new note by using the Note() class
       // HINT🤩
       // note.add();

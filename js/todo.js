@@ -30,6 +30,13 @@ class Note {
     }
     
     saveToStorage(){
+      let note = document.querySelectorAll('.card p'), i;
+      let notes =  new Array();
+      for (let i = 0; i < note.length; ++i) {
+        notes[i] = note[i].innerHTML;
+      }
+      console.log(notes);
+      localStorage.setItem('notes', JSON.stringify(notes));
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
@@ -50,20 +57,28 @@ class Note {
       // pressing the enter key should also work
       this.btnAdd = document.getElementById('btnAddNote');
       this.btnAdd.addEventListener("click", this.createNote.bind(this));
-      // this.loadNotesFromStorage();
+      this.loadNotesFromStorage();
     }
     
     loadNotesFromStorage() {
+      storedNotes.forEach(function(card) {
+        let note = new Note(card);
+        note.add();
+      });
       // HINT🤩
       // load all notes from storage here and add them to the screen
       // something like note.add() in a loop would be nice
+      
     }
      
     createNote(e){
       this.txtAdd = document.getElementById('txtAddNote').value;
+      if(this.txtAdd != ""){
       let note = new Note(this.txtAdd);
       note.add();
+      note.saveToStorage();
       this.reset();
+      };
       // note.add
       // this function should create a new note by using the Note() class
       // HINT🤩
@@ -79,4 +94,7 @@ class Note {
     
   }
   
+
+  let storedNotes = JSON.parse(localStorage.getItem("notes"));
+
   let app = new App();

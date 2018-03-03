@@ -34,9 +34,10 @@ class Note {
       let notes =  new Array();
       for (let i = 0; i < note.length; ++i) {
         notes[i] = note[i].innerHTML;
-      }
-      console.log(notes);
+      };
       localStorage.setItem('notes', JSON.stringify(notes));
+
+      
       // HINT🤩
       // localStorage only supports strings, not arrays
       // if you want to store arrays, look at JSON.parse and JSON.stringify
@@ -44,6 +45,8 @@ class Note {
     
     remove(){
       this.remove();
+      let note = new Note();
+      note.saveToStorage();
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
     } 
@@ -61,6 +64,7 @@ class Note {
     }
     
     loadNotesFromStorage() {
+      storedNotes.reverse();
       storedNotes.forEach(function(card) {
         let note = new Note(card);
         note.add();
@@ -96,5 +100,4 @@ class Note {
   
 
   let storedNotes = JSON.parse(localStorage.getItem("notes"));
-
   let app = new App();

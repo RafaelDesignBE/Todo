@@ -1,17 +1,30 @@
 class Note {
     constructor(title) {
       this.title = title;
-      // HINT🤩 this.element = this.createElement(title);
+      this.element = this.createElement(title);
     }
     
     createElement(title){
       let newNote = document.createElement('div');
-      // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
-      
+      newNote.setAttribute('class', 'card');
+      let newPar = document.createElement('p');
+      let remove = document.createElement('a');
+      remove.setAttribute('class', 'card-remove');
+      remove.setAttribute('href', '#');
+      let newTitle = document.createTextNode(this.title);
+      let removeTitle = document.createTextNode('Remove');
+      remove.appendChild(removeTitle);
+      newPar.appendChild(newTitle);
+      newNote.appendChild(newPar);
+      newNote.appendChild(remove);
+      document.querySelector('a.card-remove').addEventListener('click', this.remove.bind(newNote));    
       return newNote;
     }
     
-    add(){
+    add(title,element){
+      let notes = document.querySelector('.notes');
+      let prev = document.querySelector(".card");
+      notes.insertBefore(this.element, prev);
       // HINT🤩
       // this function should append the note to the screen somehow
     }
@@ -23,6 +36,7 @@ class Note {
     }
     
     remove(){
+      alert('remove');
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
     } 
@@ -47,8 +61,10 @@ class Note {
      
     createNote(e){
       this.txtAdd = document.getElementById('txtAddNote').value;
-      let newnote = new Note(this.txtAdd);
-      console.log(newnote);
+      let note = new Note(this.txtAdd);
+      
+      note.add();
+      // note.add
       // this function should create a new note by using the Note() class
       // HINT🤩
       // note.add();

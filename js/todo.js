@@ -8,16 +8,16 @@ class Note {
       let newNote = document.createElement('div');
       newNote.setAttribute('class', 'card');
       let newPar = document.createElement('p');
-      let remove = document.createElement('a');
-      remove.setAttribute('class', 'card-remove');
-      remove.setAttribute('href', '#');
+      let a = document.createElement('a');
+      a.setAttribute('class', 'card-remove');
+      a.setAttribute('href', '#');
       let newTitle = document.createTextNode(this.title);
       let removeTitle = document.createTextNode('Remove');
-      remove.appendChild(removeTitle);
+      a.appendChild(removeTitle);
       newPar.appendChild(newTitle);
       newNote.appendChild(newPar);
-      newNote.appendChild(remove);
-      document.querySelector('a.card-remove').addEventListener('click', this.remove.bind(newNote));    
+      newNote.appendChild(a);
+      a.addEventListener('click', this.remove.bind(newNote));    
       return newNote;
     }
     
@@ -36,6 +36,7 @@ class Note {
     }
     
     remove(){
+      this.remove();
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
     } 

@@ -59,6 +59,12 @@ class Note {
       // clicking the button should work
       // pressing the enter key should also work
       this.btnAdd = document.getElementById('btnAddNote');
+      document.querySelector('#txtAddNote').addEventListener('keypress', function (e) {
+        var key = e.which || e.keyCode;
+        if (key === 13) { 
+          document.getElementById('btnAddNote').click();
+        }
+    });
       this.btnAdd.addEventListener("click", this.createNote.bind(this));
       this.loadNotesFromStorage();
     }

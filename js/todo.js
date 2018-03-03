@@ -36,7 +36,6 @@ class Note {
     }
     
     remove(){
-      alert('remove');
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
     } 
@@ -62,8 +61,8 @@ class Note {
     createNote(e){
       this.txtAdd = document.getElementById('txtAddNote').value;
       let note = new Note(this.txtAdd);
-      
       note.add();
+      this.reset();
       // note.add
       // this function should create a new note by using the Note() class
       // HINT🤩
@@ -74,6 +73,7 @@ class Note {
     
     reset(){
       // this function should reset the form 
+      document.getElementById('txtAddNote').value = "";
     }
     
   }

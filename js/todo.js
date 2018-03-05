@@ -43,10 +43,18 @@ class Note {
       // if you want to store arrays, look at JSON.parse and JSON.stringify
     }
     
-    remove(){
-      this.remove();
-      let note = new Note();
-      note.saveToStorage();
+    remove(e){
+      let rem = this;
+      rem.classList.add("animated", "bounceOutLeft");
+      rem.style.background = "none";
+      rem.style.boxShadow = "none";
+      setTimeout(function(){ 
+        rem.remove(); 
+        let note = new Note();
+        note.saveToStorage();
+      }, 1000);
+      
+      e.preventDefault();
       // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
       // in this function, 'this' will refer to the current note element
     } 
@@ -60,9 +68,10 @@ class Note {
       // pressing the enter key should also work
       this.btnAdd = document.getElementById('btnAddNote');
       document.querySelector('#txtAddNote').addEventListener('keypress', function (e) {
-        var key = e.which || e.keyCode;
+        let key = e.which || e.keyCode;
         if (key === 13) { 
           document.getElementById('btnAddNote').click();
+          e.preventDefault();
         }
     });
       this.btnAdd.addEventListener("click", this.createNote.bind(this));

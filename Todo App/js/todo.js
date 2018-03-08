@@ -79,6 +79,7 @@ class Note {
     }
     
     loadNotesFromStorage() {
+      let storedNotes = JSON.parse(localStorage.getItem("notes"));
       storedNotes.reverse();
       storedNotes.forEach(function(card) {
         let note = new Note(card);
@@ -112,7 +113,5 @@ class Note {
     }
     
   }
-  
 
-  let storedNotes = JSON.parse(localStorage.getItem("notes"));
   let app = new App();

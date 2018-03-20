@@ -8,5 +8,3 @@ app.use(bodyParser.json());
 
 
 app.use("/kweeni", require('./routes/kweeni'));
-
-app.listen(3000, () => console.log('Running...'))
